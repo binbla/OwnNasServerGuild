@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Bla's Home",
+    "description": "Access the personal homepage of Bla.",
+    "url": "https://binbla.com",
+    "icon": "https://img.icons8.com/ios/50/wordpress--v1.png",
+    "fontIcon": "fa-solid fa-house"
+  },
+  {
+    "name": "V2rayA",
+    "description": "V2rayA - A V2ray management platform.",
+    "url": "http://localhost:2017",
+    "icon": "https://img.icons8.com/ios/50/v.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "QBittorrent",
+    "description": "Download and share torrents with QBittorrent.",
+    "url": "https://qb.kore.host",
+    "icon": "https://img.icons8.com/ios/50/qbittorrent.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "Code",
+    "description": "Web-based code editor for your projects.",
+    "url": "https://code.kore.host",
+    "icon": "https://img.icons8.com/ios/50/visual-studio.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "AriaNg",
+    "description": "AriaNg - Web UI for Aria2 download manager.",
+    "url": "https://aria2.kore.host",
+    "icon": "https://img.icons8.com/ios/50/a.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "WebDav",
+    "description": "Access files remotely with WebDav protocol.",
+    "url": "https://storage.kore.host/dav",
+    "icon": "https://img.icons8.com/ios/50/dav.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "Router",
+    "description": "Access and manage your router settings.",
+    "url": "http://router.kore.host",
+    "icon": "https://img.icons8.com/ios/50/cisco-router.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "Router_L",
+    "description": "Access Router_L settings in local network.",
+    "url": "http://192.168.2.1",
+    "icon": "https://img.icons8.com/ios-filled/50/cisco-router.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "交换机",
+    "description": "Manage your local switch network settings.",
+    "url": "http://192.168.1.1",
+    "icon": "https://img.icons8.com/windows/32/swap.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "猫棒",
+    "description": "Access your Cat Stick settings.",
+    "url": "http://192.168.1.2",
+    "icon": "https://img.icons8.com/ios/50/cat.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "光猫",
+    "description": "Manage your optical network terminal settings.",
+    "url": "http://192.168.2.253",
+    "icon": "https://img.icons8.com/ios/50/cat.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "AList",
+    "description": "A modern file list manager.",
+    "url": "https://alist.kore.host",
+    "icon": "https://img.icons8.com/ios/50/list--v1.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "Jupyter",
+    "description": "Jupyter notebooks for data science and coding.",
+    "url": "https://jupyter.kore.host",
+    "icon": "https://img.icons8.com/ios/50/jupyter.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "DDns",
+    "description": "Dynamic DNS service for easy domain management.",
+    "url": "https://ddns.kore.host",
+    "icon": "https://img.icons8.com/ios/50/dns.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "Blog",
+    "description": "Personal blog platform to share ideas.",
+    "url": "https://blog.kore.host",
+    "icon": "https://img.icons8.com/ios/50/blog.png",
+    "fontIcon": ""
+  },
+  {
+    "name": "Jellyfin",
+    "description": "Jellyfin media server to organize and stream your media.",
+    "url": "https://jellyfin.kore.host",
+    "icon": "https://img.icons8.com/carbon-copy/100/jellyfin.png",
+    "fontIcon": ""
+  }
+]

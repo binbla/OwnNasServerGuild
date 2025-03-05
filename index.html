@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔法导航站 ✨</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="fontawesome-free-6.7.2-web/css/all.css">
+</head>
+
+<body>
+    <!-- /* 标题部分 */ -->
+    <div class="header">
+        <h1>
+            <span>魔</span><span>法</span><span>导</span><span>航</span><span>站</span><span>✨</span>
+        </h1>
+        <p>点击探索神奇服务</p>
+    </div>
+
+    <!-- /* 卡片容器 */ -->
+    <div class="container" id="app"></div>
+    <!-- /* 漂浮几何图形 */ -->
+    <div class="shapes">
+        <div class="shape circle"></div>
+        <div class="shape square"></div>
+        <div class="shape triangle"></div>
+        <div class="shape circle"></div>
+        <div class="shape hexagon"></div>
+        <div class="shape star"></div>
+        <div class="shape diamond"></div>
+        <div class="shape infinity"></div>
+        <div class="shape moon"></div>
+        <div class="shape oval"></div>
+    </div>
+
+    <!-- /* 脚本部分 */ -->
+    <script>
+        const body = document.body;
+        // 禁止右键菜单
+        body.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        body.addEventListener('click', function (e) {
+            const ripple = document.createElement('div');
+            ripple.classList.add('ripple');
+            document.body.appendChild(ripple);
+
+            // 设置涟漪的位置
+            const x = e.clientX;
+            const y = e.clientY;
+
+            // 动态设置涟漪大小，基于屏幕大小（缩小三倍）
+            const size = Math.max(window.innerWidth, window.innerHeight) * 0.1; // 大小为屏幕的 10%
+            ripple.style.width = `${size}px`;
+            ripple.style.height = `${size}px`;
+
+            // 调整涟漪元素的位置，使其中心点与点击位置对齐
+            ripple.style.left = `${x - size / 2}px`;
+            ripple.style.top = `${y - size / 2}px`;
+
+            // 动画结束后移除涟漪元素
+            ripple.addEventListener('animationend', () => {
+                ripple.remove();
+            });
+        });
+        // 加载 config.json 并渲染卡片
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('config.json');
+                const data = await response.json();
+                const container = document.querySelector('#app');
+                if (!data.length) {
+                    container.innerHTML = '<p style="text-align: center; color: white;">暂无数据</p>';
+                    return;
+                }
+                data.forEach(site => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+                    // 判断图标是图片还是 Font Icon
+                    let iconHTML = '';
+
+                    // 优先考虑 fontIcon 字段
+                    if (site.fontIcon && site.fontIcon !== "") {
+                        // 如果有 fontIcon 字段并且不为空，渲染 Font Icon
+                        iconHTML = `<i class="card-icon ${site.fontIcon} "></i>`;
+                    } else if (site.icon && /\.(jpg|jpeg|png|gif|bmp)$/i.test(site.icon)) {
+                        // 如果是图片链接
+                        iconHTML = `<img src="${site.icon}" alt="${site.name} 图标" class="card-icon" />`;
+                    } else {
+                        // 如果没有 fontIcon 并且 icon 为空，使用默认图标
+                        iconHTML = `<img src="default-icon.png" alt="${site.name} 图标" class="card-icon" />`;
+                    }
+                    // 使用新结构化的 HTML
+                    card.innerHTML = `
+                <div class="card-header">
+                    ${iconHTML}
+                    <h2>${site.name}</h2>
+                </div>
+                <div class="card-url">
+                    <a href="${site.url}" target="_blank">${site.url}</a>
+                </div>
+                <div class="card-description">
+                    <p>${site.description}</p>
+                </div>
+            `;
+
+                    card.addEventListener('click', () => window.open(site.url, '_blank'));
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('加载失败:', error);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

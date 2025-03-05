@@ -1,0 +1,516 @@
+/* 保留原始动态背景样式 */
+body {
+    margin: 0;
+    font-family: 'Comic Neue', cursive;
+    background: linear-gradient(45deg, rgba(255, 107, 107, 0.5), rgba(247, 215, 148, 0.5), rgba(106, 137, 204, 0.5), rgba(56, 173, 169, 0.5), rgba(243, 104, 224, 0.5), rgba(72, 219, 251, 0.5), rgba(29, 209, 161, 0.5), rgba(255, 159, 67, 0.5));
+    background-size: 800% 800%;
+    animation: gradient 12s ease infinite;
+    color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@keyframes gradient {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    25%,
+    75% {
+        background-position: 50% 100%;
+    }
+}
+
+/* 修改header样式 */
+.header {
+    text-align: center;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 1400px;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+}
+
+.header h1 {
+    font-size: 3em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    user-select: none;
+    /* 禁止文本选择 */
+}
+
+/* 单个字的效果时间差 */
+.header h1 span {
+    display: inline-block;
+    animation: wobble 1.5s infinite ease-in-out;
+}
+
+.header h1 span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.header h1 span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.header h1 span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.header h1 span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.header h1 span:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+.header h1 span:nth-child(7) {
+    animation-delay: 0.6s;
+}
+
+.header h1 span:nth-child(8) {
+    animation-delay: 0.7s;
+}
+
+/* 副标题 */
+.header p {
+    font-size: 1.2em;
+    margin: 10px 0 0;
+    user-select: none;
+}
+
+@keyframes wobble {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(2px, -2px) rotate(-2deg);
+    }
+
+    50% {
+        transform: translate(-2px, 2px) rotate(2deg);
+    }
+
+    75% {
+        transform: translate(2px, 2px) rotate(-1deg);
+    }
+
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+
+/* 调整容器布局 */
+.container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    align-items: flex-start;
+    box-sizing: border-box;
+    /* 让子元素（.card）按照内容自适应 */
+}
+
+/* 卡片样式改造 */
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* 使上下间距适当 */
+}
+
+/* 卡片上部分（图标 + 网站名） */
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    /* 图标和网站名分开 */
+}
+
+.card-header img {
+    width: 48px;
+    height: 48px;
+    /* border-radius: 50%; */
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.card-header h2 {
+    font-size: 1.2em;
+    color: #2d3436;
+    margin: 0;
+    flex-grow: 1;
+    /* 使网站名占据剩余空间 */
+}
+
+/* 网站URL部分 */
+.card-url {
+    font-size: 0.9em;
+    color: #636e72;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+    user-select: none;
+}
+
+/* 描述部分 */
+.card-description {
+    color: #636e72;
+    font-size: 0.95em;
+    line-height: 1.4;
+    user-select: none;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg,
+            rgba(255, 107, 107, 0.1),
+            rgba(106, 137, 204, 0.1),
+            rgba(56, 173, 169, 0.1));
+    z-index: 1;
+}
+
+/* 卡片鼠标悬停效果 */
+.card:hover {
+    transform: translateY(-5px) rotate(2deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* card里面的图片，好像没有使用，后面使用的是独立的选择器 */
+.card img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 15px;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover img {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.card h2 {
+    color: #2d3436;
+    margin: 10px 0;
+    /* position: relative; */
+    /* z-index: 2; */
+}
+
+.card p {
+    color: #636e72;
+    font-size: 0.95em;
+    line-height: 1.4;
+    word-wrap: break-word;
+    /* 防止溢出，自动换行 */
+    overflow-wrap: break-word;
+    /* 防止溢出，自动换行 */
+    white-space: normal;
+    /* 确保文本换行 */
+    /* position: relative; */
+    /* z-index: 2; */
+}
+
+.card a {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(106, 137, 204, 0.8);
+    color: white !important;
+    border-radius: 25px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.card a:hover {
+    background: rgba(255, 107, 107, 0.8);
+    transform: scale(1.05);
+}
+
+/* 图标是图片 */
+.card img.card-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+    /* border-radius: 50%; */
+    /* 图标使用圆形裁剪，裁剪会导致图标小一圈*/
+    object-fit: cover;
+}
+
+/* 图标是font icon */
+.card i.card-icon {
+    font-size: 40px;
+    color: #f4a7b9;
+    margin-bottom: 10px;
+    display: inline-block;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+/* 容器，负责保持所有形状的位置，大小和背景 */
+.shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* 所有形状的基础样式，添加了动画效果。每个形状的动画时长和漂浮路径 */
+.shape {
+    position: absolute;
+    bottom: -100px;
+    width: 50px;
+    height: 50px;
+    opacity: 0.4;
+    animation: float var(--animation-duration) ease-in-out infinite;
+    transform-origin: center center;
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); */
+}
+
+
+.circle {
+    background: rgba(255, 107, 107, 0.4);
+    border-radius: 50%;
+}
+
+.square {
+    background: rgba(74, 134, 232, 0.4);
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid rgba(38, 222, 129, 0.4);
+    /* box-shadow: none; */
+}
+
+.moon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 223, 0, 0.4);
+    /* 黄色 */
+    border-radius: 50%;
+    clip-path: polygon(50% 0%,
+            100% 0%,
+            100% 100%,
+            50% 100%,
+            50% 75%,
+            25% 50%,
+            50% 25%);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background: rgba(74, 134, 232, 0.4);
+}
+
+.diamond {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 128, 0, 0.4);
+    /* 绿色 */
+    transform: rotate(45deg);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background: rgba(74, 134, 232, 0.4);
+}
+
+.star {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 215, 0, 0.4);
+    /* 金色 */
+    clip-path: polygon(50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background: rgba(74, 134, 232, 0.4);
+}
+
+.hexagon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 107, 107, 0.4);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background: rgba(74, 134, 232, 0.4);
+}
+
+.infinity {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 105, 180, 0.4);
+    /* 粉色 */
+    clip-path: path("M 10 25 C 10 10, 25 10, 25 25 C 25 40, 40 40, 40 25 C 40 10, 55 10, 55 25 C 55 40, 40 40, 40 25 C 40 10, 25 10, 25 25 C 25 40, 10 40, 10 25 Z"
+        );
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.oval {
+    width: 80px;
+    /* 宽度大于高度 */
+    height: 50px;
+    background: rgba(128, 0, 128, 0.4);
+    /* 紫色 */
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* 实现了形状的上下漂浮效果，同时加入了水平位置（translateX）和旋转（rotate）效果，产生更自然的漂浮感 */
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(var(--start-x, 0)) rotate(var(--start-rotation, 0deg));
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(-110vh) translateX(var(--end-x, 0)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 设置每个形状的不同动画时长和位置 每个形状使用不同的 --start-x 和 --end-x 来控制其水平偏移量*/
+.shape:nth-child(1) {
+    --animation-duration: 12s;
+    --start-x: 0%;
+    --end-x: 5%;
+    left: 10%;
+}
+
+.shape:nth-child(2) {
+    --animation-duration: 10s;
+    --start-x: -10%;
+    --end-x: 10%;
+    left: 20%;
+}
+
+.shape:nth-child(3) {
+    --animation-duration: 14s;
+    --start-x: 5%;
+    --end-x: -5%;
+    left: 30%;
+}
+
+.shape:nth-child(4) {
+    --animation-duration: 16s;
+    --start-x: 0%;
+    --end-x: 8%;
+    left: 40%;
+}
+
+.shape:nth-child(5) {
+    --animation-duration: 18s;
+    --start-x: -5%;
+    --end-x: -10%;
+    left: 50%;
+}
+
+.shape:nth-child(6) {
+    --animation-duration: 12s;
+    --start-x: 10%;
+    --end-x: 5%;
+    left: 60%;
+}
+
+.shape:nth-child(7) {
+    --animation-duration: 14s;
+    --start-x: 0%;
+    --end-x: -8%;
+    left: 70%;
+}
+
+.shape:nth-child(8) {
+    --animation-duration: 16s;
+    --start-x: -5%;
+    --end-x: 5%;
+    left: 80%;
+}
+
+.shape:nth-child(9) {
+    --animation-duration: 18s;
+    --start-x: 3%;
+    --end-x: 2%;
+    left: 90%;
+}
+
+.shape:nth-child(10) {
+    --animation-duration: 15s;
+    --start-x: -8%;
+    --end-x: 0%;
+    left: 95%;
+}
+
+/* 涟漪效果 */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(0);
+    opacity: 1;
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+    /* 使涟漪不干扰鼠标事件 */
+}
+
+/* 涟漪动画 */
+@keyframes ripple-animation {
+    to {
+        transform: scale(3);
+        /* 涟漪缩小到 3 倍 */
+        opacity: 0;
+        /* 最后透明 */
+    }
+}
