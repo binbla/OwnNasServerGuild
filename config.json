@@ -2,7 +2,7 @@
   {
     "name": "Bla's Home",
     "description": "Access the personal homepage of Bla.",
-    "url": "https://binbla.com",
+    "url": "https://example.com",
     "icon": "https://img.icons8.com/ios/50/wordpress--v1.png",
     "fontIcon": "fa-solid fa-house"
   },
@@ -16,35 +16,35 @@
   {
     "name": "QBittorrent",
     "description": "Download and share torrents with QBittorrent.",
-    "url": "https://qb.kore.host",
+    "url": "https://qb.example.com",
     "icon": "https://img.icons8.com/ios/50/qbittorrent.png",
     "fontIcon": ""
   },
   {
     "name": "Code",
     "description": "Web-based code editor for your projects.",
-    "url": "https://code.kore.host",
+    "url": "https://code.example.com",
     "icon": "https://img.icons8.com/ios/50/visual-studio.png",
     "fontIcon": ""
   },
   {
     "name": "AriaNg",
     "description": "AriaNg - Web UI for Aria2 download manager.",
-    "url": "https://aria2.kore.host",
+    "url": "https://aria2.example.com",
     "icon": "https://img.icons8.com/ios/50/a.png",
     "fontIcon": ""
   },
   {
     "name": "WebDav",
     "description": "Access files remotely with WebDav protocol.",
-    "url": "https://storage.kore.host/dav",
+    "url": "https://storage.example.com/dav",
     "icon": "https://img.icons8.com/ios/50/dav.png",
     "fontIcon": ""
   },
   {
     "name": "Router",
     "description": "Access and manage your router settings.",
-    "url": "http://router.kore.host",
+    "url": "http://router.example.com",
     "icon": "https://img.icons8.com/ios/50/cisco-router.png",
     "fontIcon": ""
   },
@@ -79,35 +79,35 @@
   {
     "name": "AList",
     "description": "A modern file list manager.",
-    "url": "https://alist.kore.host",
+    "url": "https://alist.example.com",
     "icon": "https://img.icons8.com/ios/50/list--v1.png",
     "fontIcon": ""
   },
   {
     "name": "Jupyter",
     "description": "Jupyter notebooks for data science and coding.",
-    "url": "https://jupyter.kore.host",
+    "url": "https://jupyter.example.com",
     "icon": "https://img.icons8.com/ios/50/jupyter.png",
     "fontIcon": ""
   },
   {
     "name": "DDns",
     "description": "Dynamic DNS service for easy domain management.",
-    "url": "https://ddns.kore.host",
+    "url": "https://ddns.example.com",
     "icon": "https://img.icons8.com/ios/50/dns.png",
     "fontIcon": ""
   },
   {
     "name": "Blog",
     "description": "Personal blog platform to share ideas.",
-    "url": "https://blog.kore.host",
+    "url": "https://blog.example.com",
     "icon": "https://img.icons8.com/ios/50/blog.png",
     "fontIcon": ""
   },
   {
     "name": "Jellyfin",
     "description": "Jellyfin media server to organize and stream your media.",
-    "url": "https://jellyfin.kore.host",
+    "url": "https://jellyfin.example.com",
     "icon": "https://img.icons8.com/carbon-copy/100/jellyfin.png",
     "fontIcon": ""
   }
