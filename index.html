@@ -4,17 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>魔法导航站 ✨</title>
+    <meta name="description" content="魔法导航站 - 发现自建网络服务">
+    <title>✨ 魔法导航站 ✨</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="fontawesome-free-6.7.2-web/css/all.css">
 </head>
 
 <body>
+    <!-- 加载动画容器 -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">魔法加载中...</div>
+    </div>
+
     <!-- /* 标题部分 */ -->
     <div class="header">
         <h1>
-            <span>魔</span><span>法</span><span>导</span><span>航</span><span>站</span><span>✨</span>
+            <span>✨</span><span>魔</span><span>法</span><span>导</span><span>航</span><span>站</span><span>✨</span>
         </h1>
         <p>点击探索神奇服务</p>
     </div>
@@ -48,9 +55,13 @@
             ripple.classList.add('ripple');
             document.body.appendChild(ripple);
 
+            // 获取滚动位置
+            const scrollX = window.scrollX;
+            const scrollY = window.scrollY;
+
             // 设置涟漪的位置
-            const x = e.clientX;
-            const y = e.clientY;
+            const x = e.clientX + scrollX;
+            const y = e.clientY + scrollY;
 
             // 动态设置涟漪大小，基于屏幕大小（缩小三倍）
             const size = Math.max(window.innerWidth, window.innerHeight) * 0.1; // 大小为屏幕的 10%
@@ -69,8 +80,11 @@
         // 加载 config.json 并渲染卡片
         document.addEventListener('DOMContentLoaded', async () => {
             try {
+                // 显示加载动画
+                loader.classList.add('active');
                 const response = await fetch('config.json');
                 const data = await response.json();
+                // await new Promise(resolve => setTimeout(resolve, 1500));
                 const container = document.querySelector('#app');
                 if (!data.length) {
                     container.innerHTML = '<p style="text-align: center; color: white;">暂无数据</p>';
@@ -95,23 +109,34 @@
                     }
                     // 使用新结构化的 HTML
                     card.innerHTML = `
-                <div class="card-header">
-                    ${iconHTML}
-                    <h2>${site.name}</h2>
-                </div>
-                <div class="card-url">
-                    <a href="${site.url}" target="_blank" onclick="event.preventDefault();">${site.url}</a>
-                </div>
-                <div class="card-description">
-                    <p>${site.description}</p>
-                </div>
-            `;
-
-                    card.addEventListener('click', () => window.open(site.url, '_blank'));
+                        <div class="card-header">
+                            ${iconHTML}
+                            <h2>${site.name}</h2>
+                        </div>
+                        <div class="card-url">
+                            <a href="${site.url}" target="_blank">${site.url}</a>
+                        </div>
+                        <div class="card-description">
+                            <p>${site.description}</p>
+                        </div>
+                    `;
+                    // 如果要整个卡片可点击，取消下面注释
+                    // card.addEventListener('click', () => window.open(site.url, '_blank'));
+                    // 并将下面一段放到url的<a>标签里面
+                    // onclick = "event.preventDefault();"
                     container.appendChild(card);
                 });
             } catch (error) {
-                console.error('加载失败:', error);
+                console.error(error);
+                container.innerHTML = `
+                    <div class="error-message">
+                        <p>😢 数据加载失败</p>
+                        <button onclick="location.reload()">重新加载</button>
+                    </div>
+                    `;
+            } finally {
+                // 无论成功与否都隐藏加载动画
+                loader.classList.remove('active');
             }
         });
     </script>
